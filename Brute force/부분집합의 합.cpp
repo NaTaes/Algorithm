@@ -25,3 +25,5 @@ int main(void)
 	cout << count << endl;
 	return 0;
 }
+
+[![문제출저]](https://www.acmicpc.net/problem/1182)
