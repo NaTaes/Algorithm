@@ -19,36 +19,36 @@ int main(void)
 		{
 			cin >> n;
 			if(i == M)
-				que.push(make_pair(1, n));
+				que.push(make_pair(1, n)); //1이 내가 뽑을 위치o
 			else
-				que.push(make_pair(0, n));
+				que.push(make_pair(0, n)); //0은 내가 뽑을 위치x
 			pque.push(n);
 		}
 
 		while(1)
 		{
-			int q = pque.top();
-			if(que.front().second == q)
+			int q = pque.top(); //중요도가 가장 큰 값을 뽑아낸다.
+			if(que.front().second == q) //가장 큰 중요도와 같다면 실행
 			{
-				if(que.front().first == 1)
+				if(que.front().first == 1) //가장 큰 중요도이면서 내가 뽑아야할 위치라면
 				{
 					count++;
 					break;
 				}
 				count++;
-				que.pop();
-				pque.pop();
+				que.pop(); //뽑아낸다.
+				pque.pop(); //가장 큰 중요도를 뽑아낸다.
 			}
-			else
+			else //가장 큰 중요도가 아니라면 뒤로 넘긴다
 			{
-				que.push(make_pair(que.front().first, que.front().second));
-				que.pop();
+				que.push(make_pair(que.front().first, que.front().second)); //맨 앞 큐를 맨 뒤로
+				que.pop(); //맨 앞 큐는 삭제
 			}
 		}
 		cout << count << endl;
-		while(!que.empty())
+		while(!que.empty()) //한 회가 끝나면 큐를 비운다.
 			que.pop();
-		while(!pque.empty())
+		while(!pque.empty()) //한 회가 끝나면 우선순위 큐를 비운다.
 			pque.pop();
 	}
 }
