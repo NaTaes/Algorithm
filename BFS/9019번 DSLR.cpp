@@ -3,7 +3,7 @@
 #include<queue>
 using namespace std;
 
-//¸ÅÅ©·Î ÇÔ¼ö¸¦ ÀÌ¿ëÇØ ½Ã°£À» ´ÜÃà ½ÃÅ²´Ù.
+//ë§¤í¬ë¡œ í•¨ìˆ˜ë¥¼ ì´ìš©í•´ ì‹œê°„ì„ ë‹¨ì¶• ì‹œí‚¨ë‹¤.
 #define D(n) (2*n)%10000;
 #define S(n) (n+9999)%10000
 #define L(n) ((n%1000)*10)+(n/1000);
@@ -17,7 +17,7 @@ int main(void)
 
 	while(T--)
 	{
-		//½ÃÀÛÇÏ´Â °÷¿¡ ch¿Í que¸¦ ¼±¾ðÇÔÀ¸·Î½á ÃÊ±âÈ­ ÄÚµå¸¦ ¾ø¾Ù ¼ö ÀÖ´Ù.
+		//ì‹œìž‘í•˜ëŠ” ê³³ì— chì™€ queë¥¼ ì„ ì–¸í•¨ìœ¼ë¡œì¨ ì´ˆê¸°í™” ì½”ë“œë¥¼ ì—†ì•¨ ìˆ˜ ìžˆë‹¤.
 		bool ch[10000] = {0,};
 		queue<pair<int, string>> que;
 		
@@ -32,15 +32,15 @@ int main(void)
 			que.pop();
 
 			int Dn = D(n);
-			if(ch[Dn] == 0) //¹æ¹®ÇÑ °÷ÀÌ ¾Æ´Ï¶ó¸é ½ÇÇàÇÑ´Ù.
+			if(ch[Dn] == 0) //ë°©ë¬¸í•œ ê³³ì´ ì•„ë‹ˆë¼ë©´ ì‹¤í–‰í•œë‹¤.
 			{
-				if(Dn==B) //¸¸¾à D°è»êÀ» °ÅÄ£ °ªÀÌ B¿Í °°´Ù¸é Ãâ·ÂÀ» ½ÇÇàÇÑ´Ù.
+				if(Dn==B) //ë§Œì•½ Dê³„ì‚°ì„ ê±°ì¹œ ê°’ì´ Bì™€ ê°™ë‹¤ë©´ ì¶œë ¥ì„ ì‹¤í–‰í•œë‹¤.
 				{
 					cout << DSLR+"D" << endl;
 					break;
 				}
-				que.push(make_pair(Dn, DSLR + "D")); //D°è»êÀ» °ÅÄ£ °ª°ú "D"¹®ÀÚ¸¦ Ãß°¡ÇÑ ¹®ÀÚ¿­À» que¿¡ pushÇÑ´Ù.
-				ch[Dn] = 1; //¹æ¹®À» Ã¼Å©ÇÑ´Ù.
+				que.push(make_pair(Dn, DSLR + "D")); //Dê³„ì‚°ì„ ê±°ì¹œ ê°’ê³¼ "D"ë¬¸ìžë¥¼ ì¶”ê°€í•œ ë¬¸ìžì—´ì„ queì— pushí•œë‹¤.
+				ch[Dn] = 1; //ë°©ë¬¸ì„ ì²´í¬í•œë‹¤.
 			}
 
 			int Sn = S(n);
