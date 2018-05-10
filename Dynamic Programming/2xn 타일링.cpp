@@ -8,9 +8,9 @@ int Loop(int n)
     if(n==1) return 1;
     if(M[n]>0) return M[n];
     
-    M[n] = Loop(n-1) + Loop(n-2);
+    M[n] = (Loop(n-1) + Loop(n-2)) % 10007;
     
-    return M[n]%10007;
+    return M[n];
 }
 
 int main()
