@@ -44,7 +44,6 @@ int BFS()
 	}
 }
 
-
 int main()
 {
 	cin >> M >> N;
