@@ -6,7 +6,7 @@ char NM[50][50];
 int main(void)
 {
 	int M, N;
-	int NMmin = 64; //ÀüºÎ ¹Ù²ã¾ßÇÏ´Â »óÈ² ÃÖ¼Ò°ª
+	int NMmin = 64; //ì „ë¶€ ë°”ê¿”ì•¼í•˜ëŠ” ìƒí™© ìµœì†Œê°’
 
 	cin >> M >> N;
 
@@ -17,49 +17,36 @@ int main(void)
 			scanf("%1c", &NM[i][j]);
 	}
 
-	int LM = M-7; //8Ä­À» È®ÀÎÇÒ ¼ö ÀÖ´Â ÃÖ¼Ò ÇàÀÇ À§Ä¡
-	int LN = N-7; //8Ä­À» È®ÀÎÇÒ ¼ö ÀÖ´Â ÃÖ¼Ò ¿­ÀÇ À§Ä¡
+	int LM = M-7; //8ì¹¸ì„ í™•ì¸í•  ìˆ˜ ìˆëŠ” ìµœì†Œ í–‰ì˜ ìœ„ì¹˜
+	int LN = N-7; //8ì¹¸ì„ í™•ì¸í•  ìˆ˜ ìˆëŠ” ìµœì†Œ ì—´ì˜ ìœ„ì¹˜
 
 	for(int i=0; i<LM; i++)
 		for(int j=0; j<LN; j++)
 		{
-			int count = 0;
+			int count1 = 0;
+			int count2 = 0;
 			int x = i;
 			int y = j;
-			for(int h=0; h<8; h++) //8Ä­ÀÇ Ã¼½ºÆÇ »Ì¾Æ³»±â(¿ŞÂÊ »ó´Ü Black)
+			for(int h=0; h<8; h++) //8ì¹¸ì˜ ì²´ìŠ¤íŒ ë½‘ì•„ë‚´ê¸°
 				for(int w=0; w<8; w++)
 				{
-					if(!((h+w)%2)) //Çà+¿­==Â¦¼ö ¶ó¸é 'B'
+					if(!((h+w)%2)) //í–‰+ì—´==ì§ìˆ˜ ë¼ë©´
 					{	
-						if(NM[x+h][y+w]!='B') //Â¦¼ö À§Ä¡ÀÏ¶§ 'B'°¡ ¾Æ´Ï¶ó¸é count++
-							count++;
+						if(NM[x+h][y+w]!='B') //ì§ìˆ˜ ìœ„ì¹˜ì¼ë•Œ 'B'ê°€ ì•„ë‹ˆë¼ë©´ count1++
+							count1++;
+						if(NM[x+h][y+w]!='W') //ì§ìˆ˜ ìœ„ì¹˜ì¼ë•Œ 'W'ê°€ ì•„ë‹ˆë¼ë©´ count2++
+							count2++;
 					}
-					else //Çà+¿­==È¦¼ö ¶ó¸é 'W'
+					else //í–‰+ì—´==í™€ìˆ˜ ë¼ë©´
 					{
-						if(NM[x+h][y+w]!='W') //È¦¼ö À§Ä¡ÀÏ¶§ 'W'°¡ ¾Æ´Ï¶ó¸é count++
-							count++;
+						if(NM[x+h][y+w]!='W') //í™€ìˆ˜ ìœ„ì¹˜ì¼ë•Œ 'W'ê°€ ì•„ë‹ˆë¼ë©´ count1++
+							count1++;
+						if(NM[x+h][y+w]!='B') //í™€ìˆ˜ ìœ„ì¹˜ì¼ë•Œ 'B'ê°€ ì•„ë‹ˆë¼ë©´ count2++
+							count2++;
 					}
 				}
-			NMmin = NMmin > count ? count : NMmin; //ÃÖ¼Ò°ªÀ» ºñ±³ÇÑ´Ù.
-			
-			count = 0;
-
-			for(int h=0; h<8; h++) //8Ä­ÀÇ Ã¼½ºÆÇ »Ì¾Æ³»±â(¿ŞÂÊ »ó´Ü White)
-				for(int w=0; w<8; w++)
-				{
-					if(!((h+w)%2))
-					{	
-						if(NM[x+h][y+w]!='W')
-							count++;
-					}
-					else
-					{
-						if(NM[x+h][y+w]!='B')
-							count++;
-					}
-				}
-			NMmin = NMmin > count ? count : NMmin;
+			int mincount = min(count1, count2);
+			NMmin = NMmin > mincount ? mincount : NMmin; //ìµœì†Œê°’ì„ ë¹„êµí•œë‹¤.
 		}
-
 	cout << NMmin << endl;
 }
