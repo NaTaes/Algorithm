@@ -19,18 +19,17 @@ int main()
 	for(int i=1; i<=500; i++)
 	{
 		if(A[i]==0) continue; //값이 없다면 continue
-        D[i] = 1;
-        int temp = 1;
-        for(int j=1; j<i; j++) //가장 긴 증가하는 부분수열(11053번) 문제 참조.
-        {
+		D[i] = 1;
+		int temp = 1;
+		for(int j=1; j<i; j++) //가장 긴 증가하는 부분수열(11053번) 문제 참조.
+		{
 			if(A[i] > A[j] && temp < D[i]+D[j])
 			{
 				temp = D[i] + D[j];
 				max = max < temp ? temp : max;
 			}
-	}
-        D[i] = temp;
+		}
+		D[i] = temp;
     }
-
     cout << T-max << endl; //없앤 줄 수이므로 총 줄수 - 가장 긴 부분수열의 길이
 }
