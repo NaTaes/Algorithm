@@ -13,24 +13,24 @@ int main()
 	{
 		int n, k;
 		cin >> n >> k;
-		A[n] = k; //AÂÊ ¹øÈ£¸¦ index, BÂÊ ¹øÈ£¸¦ ¹è¿­ÀÇ °ª
+		A[n] = k; //Aìª½ ë²ˆí˜¸ë¥¼ index, Bìª½ ë²ˆí˜¸ë¥¼ ë°°ì—´ì˜ ê°’
 	}
-	//°¡Àå ±ä Áõ°¡ÇÏ´Â ºÎºÐ ¼ö¿­·Î ¸¸µç´Ù.
+	//ê°€ìž¥ ê¸´ ì¦ê°€í•˜ëŠ” ë¶€ë¶„ ìˆ˜ì—´ë¡œ ë§Œë“ ë‹¤.
 	for(int i=1; i<=500; i++)
 	{
-		if(A[i]==0) continue; //°ªÀÌ ¾ø´Ù¸é continue
+		if(A[i]==0) continue; //ê°’ì´ ì—†ë‹¤ë©´ continue
         D[i] = 1;
         int temp = 1;
-        for(int j=1; j<i; j++) //°¡Àå ±ä Áõ°¡ÇÏ´Â ºÎºÐ¼ö¿­(11053¹ø) ¹®Á¦ ÂüÁ¶.
+        for(int j=1; j<i; j++) //ê°€ìž¥ ê¸´ ì¦ê°€í•˜ëŠ” ë¶€ë¶„ìˆ˜ì—´(11053ë²ˆ) ë¬¸ì œ ì°¸ì¡°.
         {
 			if(A[i] > A[j] && temp < D[i]+D[j])
 			{
 				temp = D[i] + D[j];
 				max = max < temp ? temp : max;
 			}
-		}
+	}
         D[i] = temp;
     }
 
-    cout << T-max << endl; //¾ø¾Ø ÁÙ ¼öÀÌ¹Ç·Î ÃÑ ÁÙ¼ö - °¡Àå ±ä ºÎºÐ¼ö¿­ÀÇ ±æÀÌ
+    cout << T-max << endl; //ì—†ì•¤ ì¤„ ìˆ˜ì´ë¯€ë¡œ ì´ ì¤„ìˆ˜ - ê°€ìž¥ ê¸´ ë¶€ë¶„ìˆ˜ì—´ì˜ ê¸¸ì´
 }
