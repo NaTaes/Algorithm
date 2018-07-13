@@ -3,14 +3,14 @@
 #include<vector>
 using namespace std;
 
-vector<deque<int>> deq(5); //4���� ��Ϲ���
-bool check[5];
+vector<deque<int>> deq(5); //4개의 톱니바퀴를 위한 deque
+bool check[5]; //돌아간 톱니바퀴를 확인하는 check배열
 
 void Gear_Move(int Gnum, int dir)
 {
 	int tmp;
-	int F_R = deq[Gnum].at(2);
-	int F_L = deq[Gnum].at(6);
+	int F_R = deq[Gnum].at(2); //현재 위치에서 오른쪽 바퀴 값
+	int F_L = deq[Gnum].at(6); //현재 위치에서 왼쪽 바퀴 값
 	if(dir == 1)
 	{
 		tmp = deq[Gnum].back();
