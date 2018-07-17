@@ -21,6 +21,7 @@ void Robot_Move(int dir, int x, int y)
 
 	if(NM[x+1][y] != 0 && NM[x-1][y] != 0 && NM[x][y+1] != 0 && NM[x][y-1] != 0) //4방향이 모두 청소 또는 벽
 	{
+		//현재 dir에 대해 뒤의 위치 bx, by
 		int bx = x + dx[ndir];
 		int by = y + dy[ndir];
 		if(NM[bx][by] != -1) //뒤가 벽이 아니라면 실행
@@ -30,6 +31,7 @@ void Robot_Move(int dir, int x, int y)
 	}
 	else //4방향 중 청소할 곳이 있다.
 	{
+		//현재 dir에 대해 왼쪽의 위치 lx, ly
 		int lx = x + dx[dir];
 		int ly = y + dy[dir];
 		if(NM[lx][ly] == 0) //왼쪽이 청소한 적 없는 곳이라면 실행
