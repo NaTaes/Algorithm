@@ -2,8 +2,8 @@
 using namespace std;
 
 char NM[10][10];
-int check[10][10][10][10]; //¹æ¹® Ã¼Å© ¹è¿­
-int dx[4] = {0, 0, 1, -1}; //¡æ, ¡ç, ¡é, ¡è
+int check[10][10][10][10]; //ë°©ë¬¸ ì²´í¬ ë°°ì—´
+int dx[4] = {0, 0, 1, -1}; //â†’, â†, â†“, â†‘
 int dy[4] = {1, -1, 0, 0};
 
 int Ox, Oy;
@@ -16,22 +16,22 @@ int Move_index(int index, int dir, bool RB)
 	int bx = (index >> 8) & 15;
 	int by = (index >> 12) & 15;
 
-	if(RB) //»¡°£°øÀ» ¸ÕÀú ±¼¸°´Ù.
+	if(RB) //ë¹¨ê°„ê³µì„ ë¨¼ì € êµ´ë¦°ë‹¤.
 	{
-		while(NM[rx+dx[dir]][ry+dy[dir]] != '#') //¸ÕÀú ±¼¸° °øÀº º®¸¸ ½Å°æ¾²¸éµÈ´Ù.
+		while(NM[rx+dx[dir]][ry+dy[dir]] != '#') //ë¨¼ì € êµ´ë¦° ê³µì€ ë²½ë§Œ ì‹ ê²½ì“°ë©´ëœë‹¤.
 		{
 			rx+=dx[dir];
 			ry+=dy[dir];
-			if(rx == Ox && ry == Oy) break; //±¸¸ÛÀÌ¶ó¸é ºüÁ®³ª¿Â´Ù.
+			if(rx == Ox && ry == Oy) break; //êµ¬ë©ì´ë¼ë©´ ë¹ ì ¸ë‚˜ì˜¨ë‹¤.
 		}
-		while(NM[bx+dx[dir]][by+dy[dir]] != '#' && ((bx+dx[dir] == Ox && by+dy[dir] == Oy) || (bx+dx[dir] != rx || by+dy[dir] != ry))) //³ªÁß¿¡ ±¼¸°°øÀº ¸ÕÀú ±¼¸°°øÀÇ À§Ä¡, ±¸¸Û, º®À» ½Å°æ½á¾ßÇÑ´Ù.
+		while(NM[bx+dx[dir]][by+dy[dir]] != '#' && ((bx+dx[dir] == Ox && by+dy[dir] == Oy) || (bx+dx[dir] != rx || by+dy[dir] != ry))) //ë‚˜ì¤‘ì— êµ´ë¦°ê³µì€ ë¨¼ì € êµ´ë¦°ê³µì˜ ìœ„ì¹˜, êµ¬ë©, ë²½ì„ ì‹ ê²½ì¨ì•¼í•œë‹¤.
 		{
 			bx+=dx[dir];
 			by+=dy[dir];
 			if(bx == Ox && by == Oy) break;
 		}
 	}
-	else //ÆÄ¶õ°øÀ» ¸ÕÀú ±¼¸°´Ù.
+	else //íŒŒë€ê³µì„ ë¨¼ì € êµ´ë¦°ë‹¤.
 	{
 		while(NM[bx+dx[dir]][by+dy[dir]] != '#')
 		{
@@ -52,17 +52,17 @@ int Move_index(int index, int dir, bool RB)
 
 void Marble_Move(int index, int dir, int count)
 {
-	if(count > 11) return; //±âÈ¸°¡ 11È¸ ³Ñ¾î°¡¸é ½ÇÇàÀ» ¸ØÃá´Ù.(½ÃÀÛ count°¡ 1ÀÌ¹Ç·Î 11È¸±îÁö)
+	if(count > 11) return; //ê¸°íšŒê°€ 11íšŒ ë„˜ì–´ê°€ë©´ ì‹¤í–‰ì„ ë©ˆì¶˜ë‹¤.(ì‹œì‘ countê°€ 1ì´ë¯€ë¡œ 11íšŒê¹Œì§€)
 
 	int rx = index & 15;
 	int ry = (index >> 4) & 15;
 	int bx = (index >> 8) & 15;
 	int by = (index >> 12) & 15;
 
-	check[rx][ry][bx][by] = count; //ÇØ´çÀ§Ä¡ÀÇ ¹æ¹®¿¡ count¸¦ ³Ö¾îÁØ´Ù.
+	check[rx][ry][bx][by] = count; //í•´ë‹¹ìœ„ì¹˜ì˜ ë°©ë¬¸ì— countë¥¼ ë„£ì–´ì¤€ë‹¤.
 
-	if(bx == Ox && by == Oy) return; //ÆÄ¶õ°øÀÌ ±¸¸Û¿¡ ºüÁ³´Ù¸é ¸ØÃá´Ù.
-	if(rx == Ox && ry == Oy) //»¡°£°ø¸¸ ±¸¸Û¿¡ ºüÁ³´Ù¸é count°ªÀ» °è»êÇØÁØ ÈÄ ¸ØÃá´Ù.
+	if(bx == Ox && by == Oy) return; //íŒŒë€ê³µì´ êµ¬ë©ì— ë¹ ì¡Œë‹¤ë©´ ë©ˆì¶˜ë‹¤.
+	if(rx == Ox && ry == Oy) //ë¹¨ê°„ê³µë§Œ êµ¬ë©ì— ë¹ ì¡Œë‹¤ë©´ countê°’ì„ ê³„ì‚°í•´ì¤€ í›„ ë©ˆì¶˜ë‹¤.
 	{
 		Rol = min(count - 1, Rol);
 		return;
@@ -70,7 +70,7 @@ void Marble_Move(int index, int dir, int count)
 
 	int output;
 
-	//¿òÁ÷ÀÏ ¹æÇâ¿¡ ¸Â°Ô outputÀ» »Ì¾Æ³½´Ù.
+	//ì›€ì§ì¼ ë°©í–¥ì— ë§ê²Œ outputì„ ë½‘ì•„ë‚¸ë‹¤.
 	if(dir == 0)
 		output = ry < by ? Move_index(index, dir, false) : Move_index(index, dir, true);
 	else if(dir == 1)
@@ -80,20 +80,18 @@ void Marble_Move(int index, int dir, int count)
 	else
 		output = rx < bx ? Move_index(index, dir, true) : Move_index(index, dir, false);
 
-	if(index == output) return; //¿òÁ÷ÀÎ ¹æÇâÀÌ ÇöÀç ¹æÇâ°ú °°´Ù¸é ¸ØÃá´Ù.
+	if(index == output) return; //ì›€ì§ì¸ ë°©í–¥ì´ í˜„ì¬ ë°©í–¥ê³¼ ê°™ë‹¤ë©´ ë©ˆì¶˜ë‹¤.
 
 	rx = output & 15;
 	ry = (output >> 4) & 15;
 	bx = (output >> 8) & 15;
 	by = (output >> 12) & 15;
 	
-	if(check[rx][ry][bx][by] != 0 && check[rx][ry][bx][by] <= count) return; //¿òÁ÷ÀÏ À§Ä¡ÀÇ ¹æ¹®Ã¼Å©¹è¿­ÀÇ count°ªÀÌ ÀÛ°Å³ª °°´Ù¸é ¸ØÃá´Ù.
+	if(check[rx][ry][bx][by] != 0 && check[rx][ry][bx][by] <= count) return; //ì›€ì§ì¼ ìœ„ì¹˜ì˜ ë°©ë¬¸ì²´í¬ë°°ì—´ì˜ countê°’ì´ ì‘ê±°ë‚˜ ê°™ë‹¤ë©´ ë©ˆì¶˜ë‹¤.
 	
-	//4¹æÇâÀÇ ¿òÁ÷ÀÓÀ» ½ÇÇàÇÑ´Ù.
-	Marble_Move(output, 0, count+1);
-	Marble_Move(output, 1, count+1);
-	Marble_Move(output, 2, count+1);
-	Marble_Move(output, 3, count+1);
+	//4ë°©í–¥ì˜ ì›€ì§ì„ì„ ì‹¤í–‰í•œë‹¤.
+	for(int n=0; n<4; n++)
+		if(n != dir) Marble_Move(output, n, count+1);
 }
 
 int main(void)
