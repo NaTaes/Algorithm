@@ -117,8 +117,5 @@ int main(void)
 	Marble_Move(input, 2, 1);
 	Marble_Move(input, 3, 1);
 
-	if(Rol == 11)
-		cout << -1 << endl;
-	else
-		cout << Rol << endl;
+	cout << (Rol == 11 ? -1 : Rol) << endl;
 }
