@@ -47,24 +47,24 @@ void Ball(int x, int y, int dir, int count)
 
 		int num = NN[mx][my];
 
-		if(num == 0) //°¥ °÷ÀÌ 0ÀÌ¸é
+		if(num == 0) //ê°ˆ ê³³ì´ 0ì´ë©´
 		{
-			continue; //ÇÒ°Ô ¾ø¾î... ´õ °¡
+			continue; //í• ê²Œ ì—†ì–´... ë” ê°€
 		}
-		else if(num == -1) //°¥ °÷ÀÌ ºí·¢È¦ÀÌ¸é
+		else if(num == -1) //ê°ˆ ê³³ì´ ë¸”ë™í™€ì´ë©´
 		{
-			//°è»êÇÏ°í ±×¸¸ ÇØ
+			//ê³„ì‚°í•˜ê³  ê·¸ë§Œ í•´
 			Total = max(Total, count);
 			break;
 		}
-		else if(num < 6) //°¥ °÷ÀÌ º®ÀÌ¶ó¸é
+		else if(num < 6) //ê°ˆ ê³³ì´ ë²½ì´ë¼ë©´
 		{
-			//º®À» ¸¸³ª¼­ ¹æÇâÀ» ¹Ù²ãÁÖ°í ´õ °¡
+			//ë²½ì„ ë§Œë‚˜ì„œ ë°©í–¥ì„ ë°”ê¿”ì£¼ê³  ë” ê°€
 			mdir = (mdir + block[mdir][num-1]) % 4;
 			count++;
 			continue;
 		}
-		else //°¥ °÷ÀÌ ¸ÇÈ¦ÀÌ¶ó¸é
+		else //ê°ˆ ê³³ì´ ë§¨í™€ì´ë¼ë©´
 		{
 			int hx1 = hall[num - 6][0].first;
 			int hy1 = hall[num - 6][0].second;
@@ -113,7 +113,7 @@ int main(void)
 
 				if(NN[i][j] != 0) continue;
 
-				for(int n=0; n<4; n++) //°øÀÇ À§Ä¡¿¡¼­ ¹æÇâÀº 4¹æÇâ
+				for(int n=0; n<4; n++) //ê³µì˜ ìœ„ì¹˜ì—ì„œ ë°©í–¥ì€ 4ë°©í–¥
 				{
 					Ball(i, j, n, 0);
 				}
