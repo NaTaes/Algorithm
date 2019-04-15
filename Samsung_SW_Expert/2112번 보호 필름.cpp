@@ -38,16 +38,16 @@ void make_film(int M[13][20], int count, int x)
 	if(medicine != -1)
 		return;
 
-	if(max_count == count) //¾àÇ°À» ³ÖÀº °¹¼ö°¡ °°´Ù¸é °è»ê
+	if(max_count == count) //ì•½í’ˆì„ ë„£ì€ ê°¯ìˆ˜ê°€ ê°™ë‹¤ë©´ ê³„ì‚°
 	{
-		if(cal(M)) //K°¡ ¸Â´Ù¸é
+		if(cal(M)) //Kê°€ ë§ë‹¤ë©´
 			medicine = count;
 		return;
 	}
 
 	for(int i=x; i<D; i++)
 	{
-		int tmp[13][20]; //º¹Á¦¿ë
+		int tmp[13][20]; //ë³µì œìš©
 		for(int it=0; it<D; it++)
 			for(int jt=0; jt<W; jt++)
 			{
@@ -86,7 +86,7 @@ int main(void)
 			for(int j=0; j<W; j++)
 				cin >> DW_film[i][j];
 
-		for(int i=0; i<D; i++) //¾àÇ°À» ³ÖÀº °¹¼ö(Dº¸´Ü ÀÛ¾Æ¾ßÇÑ´Ù)
+		for(int i=0; i<D; i++) //ì•½í’ˆì„ ë„£ì€ ê°¯ìˆ˜(Dë³´ë‹¨ ì‘ì•„ì•¼í•œë‹¤)
 		{
 			max_count = i;
 			make_film(DW_film, 0, 0);
