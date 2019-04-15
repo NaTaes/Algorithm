@@ -15,16 +15,16 @@ int Min_value = 192;
 void StoneBreak(int Map[15][12], int sy)
 {
 	int s;
-	for(s=0; s<H; s++) //Ã¹ º®µ¹ È®ÀÎ
+	for(s=0; s<H; s++) //ì²« ë²½ëŒ í™•ì¸
 		if(Map[s][sy] != 0) break;
 	
-	if(s == H) return; //º®µ¹ÀÌ ¾øÀ¸¸é ¼öÇàÇÏÁö ¾Ê´Â´Ù.
+	if(s == H) return; //ë²½ëŒì´ ì—†ìœ¼ë©´ ìˆ˜í–‰í•˜ì§€ ì•ŠëŠ”ë‹¤.
 
 	queue<pair<int, int>> que;
 
 	que.push(make_pair(s, sy));
 
-	while(!que.empty()) //Áö¿ì±â °è»ê
+	while(!que.empty()) //ì§€ìš°ê¸° ê³„ì‚°
 	{
 		int x = que.front().first;
 		int y = que.front().second;
@@ -34,7 +34,7 @@ void StoneBreak(int Map[15][12], int sy)
 		
 		if(num == 0) continue;		
 
-		Map[x][y] = 0; //Áö¿ì±â
+		Map[x][y] = 0; //ì§€ìš°ê¸°
 
 		if(num == 1) continue;
 
@@ -52,9 +52,9 @@ void StoneBreak(int Map[15][12], int sy)
 		}
 	}
 
-	for(int i=0; i<W; i++) //¿­
+	for(int i=0; i<W; i++) //ì—´
 	{
-		for(int j=H-1; j>0; j--) //Çà
+		for(int j=H-1; j>0; j--) //í–‰
 		{
 			if(Map[j][i] == 0)
 			{
@@ -80,12 +80,12 @@ void Ball(int Map[15][12], int n)
 		for(int jy=0; jy<W; jy++)
 			tmp[ix][jy] = Map[ix][jy];
 
-	if(n == N) //N°³ÀÇ °øÀ» ´øÁö°í Áö¿öÁø °¹¼ö ±¸ÇÏ±â
+	if(n == N) //Nê°œì˜ ê³µì„ ë˜ì§€ê³  ì§€ì›Œì§„ ê°¯ìˆ˜ êµ¬í•˜ê¸°
 	{
 		int count = 0;
-		for(int i=0; i<W; i++) //¿­
+		for(int i=0; i<W; i++) //ì—´
 		{
-			for(int j=H-1; j>=0; j--) //Çà
+			for(int j=H-1; j>=0; j--) //í–‰
 			{
 				if(Map[j][i] == 0) break;
 				count++;
@@ -96,14 +96,14 @@ void Ball(int Map[15][12], int n)
 		return;
 	}
 
-	for(int i=0; i<W; i++) //¿­ ÀüºÎ¿¡ Áßº¹À» Çã¿ëÇØ¼­ °øÀ» µ¹¸°´Ù.
+	for(int i=0; i<W; i++) //ì—´ ì „ë¶€ì— ì¤‘ë³µì„ í—ˆìš©í•´ì„œ ê³µì„ ëŒë¦°ë‹¤.
 	{		
-		//i¿­¿¡¼­ ¶³¾îÁø °ø¿¡ ÀÇÇØ Á¦°Å µÇ´Â ÇÔ¼ö ±¸Çö.
+		//iì—´ì—ì„œ ë–¨ì–´ì§„ ê³µì— ì˜í•´ ì œê±° ë˜ëŠ” í•¨ìˆ˜ êµ¬í˜„.
 		StoneBreak(tmp, i);
 
-		Ball(tmp, n+1); //Á¦°ÅµÈ »óÅÂ¿¡¼­ ´ÙÀ½ °øÀ¸·Î ³Ñ¾î°£´Ù.
+		Ball(tmp, n+1); //ì œê±°ëœ ìƒíƒœì—ì„œ ë‹¤ìŒ ê³µìœ¼ë¡œ ë„˜ì–´ê°„ë‹¤.
 		
-		//tmp = Map º¹»ç
+		//tmp = Map ë³µì‚¬
 		for(int ix=0; ix<H; ix++)
 			for(int jy=0; jy<W; jy++)
 				tmp[ix][jy] = Map[ix][jy];
