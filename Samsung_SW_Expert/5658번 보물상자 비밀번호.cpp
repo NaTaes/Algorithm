@@ -41,11 +41,11 @@ int main(void)
 			deq.push_back(c);
 		}
 
-		for(int i=0; i<N/4; i++) //µ¹¸®´Â È½¼ö
+		for(int i=0; i<N/4; i++) //ëŒë¦¬ëŠ” íšŸìˆ˜
 		{
 			int num = 0;
 			int n = 0;
-			for(int j=N-1; j>=0; j--) //°ªµéÀ» ¿ì¼±¼øÀ§ Å¥¿¡ ³Ö±â(µ¹¸®´Â È½¼ö¿¡ ¸ÂÃç)
+			for(int j=N-1; j>=0; j--) //ê°’ë“¤ì„ ìš°ì„ ìˆœìœ„ íì— ë„£ê¸°(ëŒë¦¬ëŠ” íšŸìˆ˜ì— ë§ì¶°)
 			{
 				num += (deq[j] * pow(16, n));
 
@@ -59,7 +59,7 @@ int main(void)
 				n++;
 			}
 
-			//µ¹¸®ÀÚ
+			//ëŒë¦¬ì
 			int tmp = deq[N-1];
 			deq.pop_back();
 			deq.push_front(tmp);
@@ -67,7 +67,7 @@ int main(void)
 		
 		int size = que.size();
 		int count = 0;
-		for(int i=0; i<size; i++) //k¹øÂ° Å« ¼ö Ã£±â
+		for(int i=0; i<size; i++) //kë²ˆì§¸ í° ìˆ˜ ì°¾ê¸°
 		{
 			int pre = que.top();
 			que.pop();
