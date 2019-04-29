@@ -63,9 +63,9 @@ int main(void)
 				if(mx < 0 || my < 0 || mx > N-1 || my > N-1) continue;
 				if(ch[mx][my]) continue;
 				
-				if(BS < NN[mx][my]) continue; //�̵� ����
+				if(BS < NN[mx][my]) continue; //ÀÌµ¿ °¡´É
 
-				if(NN[mx][my] && BS > NN[mx][my]) //�Դ´�
+				if(NN[mx][my] && BS > NN[mx][my]) //¸Ô´Â´Ù
 				{
 					ENN[mx][my] = true;
 					findFish = true;
