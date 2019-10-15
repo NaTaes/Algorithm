@@ -26,11 +26,11 @@ long long Possible(long long num, int n, vector<int> tmp)
 
 long long binarySearch(long long Mn, long long Mx, int n, long long value, vector<int> tmp)
 {
-    if(Mx - Mn == 1) return value;
+    if(Mx - Mn == 1) return value; // <-> if(Mx < Mn) return value;
     long long Md = (Mx + Mn) / 2;
     long long Ps = Possible(Md, n, tmp);
-    if(Ps == -1) return binarySearch(Md, Mx, n, value, tmp);
-    else return binarySearch(Mn, Ps, n, Ps, tmp);
+    if(Ps == -1) return binarySearch(Md, Mx, n, value, tmp); // <-> binarySearch(Md+1, Mx, n, value, tmp);
+    else return binarySearch(Mn, Ps, n, Ps, tmp); // <-> binarySearch(Mn, Ps-1, n, Ps, tmp);
 }
 
 long long solution(int n, vector<int> times) {
