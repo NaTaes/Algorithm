@@ -1,14 +1,14 @@
 #include<iostream>
 using namespace std;
 
-int DICE[6]; //DICE[0] : À­¸é, DICE[5] : ¹Ù´Ú¸é
+int DICE[6]; //DICE[0] : ìœ—ë©´, DICE[5] : ë°”ë‹¥ë©´
 int MAP[20][20];
 
 int N, M, x, y;
 
 int DICE_MOVE(int command)
 {
-	if(command == 1) //µ¿ 1¡æ5¡æ3¡æ0¡æ1
+	if(command == 1) //ë™ 1â†’5â†’3â†’0â†’1
 	{
 		if(y+1 == M) return -1;
 		int tmp = DICE[1];
@@ -26,7 +26,7 @@ int DICE_MOVE(int command)
 		}
 		return DICE[0];
 	}
-	else if(command == 2) //¼­ 1¡ç5¡ç3¡ç0¡ç1
+	else if(command == 2) //ì„œ 1â†5â†3â†0â†1
 	{
 		if(y-1 < 0) return -1;
 		int tmp = DICE[1];
@@ -44,7 +44,7 @@ int DICE_MOVE(int command)
 		}
 		return DICE[0];
 	}
-	else if(command == 3) //ºÏ 4¡æ5¡æ2¡æ0¡æ4
+	else if(command == 3) //ë¶ 4â†’5â†’2â†’0â†’4
 	{
 		if(x-1 < 0) return -1;
 		int tmp = DICE[4];
@@ -62,7 +62,7 @@ int DICE_MOVE(int command)
 		}
 		return DICE[0];
 	}
-	else //³² 4¡ç5¡ç2¡ç0¡ç4
+	else //ë‚¨ 4â†5â†2â†0â†4
 	{
 		if(x+1 == N) return -1;
 		int tmp = DICE[4];

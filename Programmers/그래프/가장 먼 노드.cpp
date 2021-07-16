@@ -1,4 +1,4 @@
-/* https://programmers.co.kr/learn/courses/30/lessons/49189 */
+// https://programmers.co.kr/learn/courses/30/lessons/49189
 
 #include <string>
 #include <vector>

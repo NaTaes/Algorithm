@@ -3,39 +3,39 @@
 using namespace std;
 
 bool Map[101][101];
-vector<pair<int, int>> vec; //¼±ºĞÀÇ (x,y)°ªÀ» ÀúÀåÇÏ´Â vector
+vector<pair<int, int>> vec; //ì„ ë¶„ì˜ (x,y)ê°’ì„ ì €ì¥í•˜ëŠ” vector
 
-int dx[4] = {-1, 0, 1, 0}; //¡ç, ¡è, ¡æ, ¡é¹æÇâÀÏ¶§ ½Ã°è¹æÇâ 90µµ
+int dx[4] = {-1, 0, 1, 0}; //â†, â†‘, â†’, â†“ë°©í–¥ì¼ë•Œ ì‹œê³„ë°©í–¥ 90ë„
 int dy[4] = {0, 1, 0, -1};
 int x, y, d, g;
 
 void Dragon(int gen)
 {
-	int index = vec.size() - 1; //ÇöÀç ¼¼´ëÀÇ ¼±ºĞÀÇ Å©±â¸¦ index°ª¿¡ ÀúÀåÇÑ´Ù.
+	int index = vec.size() - 1; //í˜„ì¬ ì„¸ëŒ€ì˜ ì„ ë¶„ì˜ í¬ê¸°ë¥¼ indexê°’ì— ì €ì¥í•œë‹¤.
 	int dir;
-	for(int i=index; i>0; i--) //¼±ºĞÀÇ ±æÀÌ¸¸Å­¸¸ ½ÇÇàÇÑ´Ù.(³¡Á¡ ºÎÅÍ ½ÇÇà)
+	for(int i=index; i>0; i--) //ì„ ë¶„ì˜ ê¸¸ì´ë§Œí¼ë§Œ ì‹¤í–‰í•œë‹¤.(ëì  ë¶€í„° ì‹¤í–‰)
 	{
-		int ex = vec[i].first - vec[i-1].first; //Á¡ °ú Á¡ÀÇ ¹æÇâÀ» ¾Ë±â À§ÇÑ ex, ey
+		int ex = vec[i].first - vec[i-1].first; //ì  ê³¼ ì ì˜ ë°©í–¥ì„ ì•Œê¸° ìœ„í•œ ex, ey
 		int ey = vec[i].second - vec[i-1].second;
 		
-		//¹æÇâ¿¡ ¸Â´Â dirÀ» ´ëÀÔ
+		//ë°©í–¥ì— ë§ëŠ” dirì„ ëŒ€ì…
 		if(ex == 0 && ey == 1) dir = 0;
 		else if(ex == 1 && ey == 0) dir = 1;
 		else if(ex == 0 && ey == -1) dir = 2;
 		else dir = 3;
 
-		//°è¼ÓÇØ¼­ ¼±ºĞÀº Ãß°¡ µÉ °ÍÀÌ°í, ±× Ãß°¡µÈ À§Ä¡¸¦ ±âÁØÀ¸·Î ¼±À» ÀÌµ¿½ÃÄÑ¾ßÇÑ´Ù.
+		//ê³„ì†í•´ì„œ ì„ ë¶„ì€ ì¶”ê°€ ë  ê²ƒì´ê³ , ê·¸ ì¶”ê°€ëœ ìœ„ì¹˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ì„ ì„ ì´ë™ì‹œì¼œì•¼í•œë‹¤.
 		int mx = vec[vec.size() - 1].first;
 		int my = vec[vec.size() - 1].second;
 
-		vec.push_back(make_pair(mx+dx[dir], my+dy[dir])); //90µµ È¸ÀüµÈ (x,y)¸¦ ¼±ºĞvector¿¡ Ãß°¡ÇÑ´Ù.
-		Map[mx+dx[dir]][my+dy[dir]] = true; //Map¿¡ Ã¼Å©ÇØÁØ´Ù.
+		vec.push_back(make_pair(mx+dx[dir], my+dy[dir])); //90ë„ íšŒì „ëœ (x,y)ë¥¼ ì„ ë¶„vectorì— ì¶”ê°€í•œë‹¤.
+		Map[mx+dx[dir]][my+dy[dir]] = true; //Mapì— ì²´í¬í•´ì¤€ë‹¤.
 	}
 	gen++;
-	if(gen == g) //¿øÇÏ´Â ¼¼´ë¸¦ Ã¤¿ü´Ù¸é ºüÁ® ³ª¿Â´Ù.
+	if(gen == g) //ì›í•˜ëŠ” ì„¸ëŒ€ë¥¼ ì±„ì› ë‹¤ë©´ ë¹ ì ¸ ë‚˜ì˜¨ë‹¤.
 		return;
 	else
-		Dragon(gen); //¿øÇÏ´Â ¼¼´ë°¡ ¾Æ´Ï¹Ç·Î µå·¡°ï Ä¿ºê¸¦ °è¼Ó ÇÑ´Ù.
+		Dragon(gen); //ì›í•˜ëŠ” ì„¸ëŒ€ê°€ ì•„ë‹ˆë¯€ë¡œ ë“œë˜ê³¤ ì»¤ë¸Œë¥¼ ê³„ì† í•œë‹¤.
 }
 
 int main(void)
@@ -47,10 +47,10 @@ int main(void)
 	{
 		cin >> y >> x >> d >> g;
 
-		vec.push_back(make_pair(x, y)); //½ÃÀÛ Á¡À» ¼±ºĞ¿¡ ³Ö¾îÁØ´Ù.
-		Map[x][y] = true; //Map Ã¼Å©
+		vec.push_back(make_pair(x, y)); //ì‹œì‘ ì ì„ ì„ ë¶„ì— ë„£ì–´ì¤€ë‹¤.
+		Map[x][y] = true; //Map ì²´í¬
 
-		//dÀÇ °ª¿¡ ¸ÂÃç ´ÙÀ½ Á¡À» ¼±ºĞ¿¡ ³Ö¾îÁØ´Ù.
+		//dì˜ ê°’ì— ë§ì¶° ë‹¤ìŒ ì ì„ ì„ ë¶„ì— ë„£ì–´ì¤€ë‹¤.
 		if(d % 2==0)
 		{	
 			vec.push_back(make_pair(x+dx[d+1], y+dy[d+1]));
@@ -61,12 +61,12 @@ int main(void)
 			vec.push_back(make_pair(x+dx[d-1], y+dy[d-1]));
 			Map[x+dx[d-1]][y+dy[d-1]] = true;
 		}
-		if(g!=0) //¼¼´ë°¡ 0ÀÌ¶ó¸é µå·¡°ï Ä¿ºê¸¦ ½ÇÇàÇÒ ÇÊ¿ä¾ø´Ù.
+		if(g!=0) //ì„¸ëŒ€ê°€ 0ì´ë¼ë©´ ë“œë˜ê³¤ ì»¤ë¸Œë¥¼ ì‹¤í–‰í•  í•„ìš”ì—†ë‹¤.
 			Dragon(0);
-		vec.clear(); //¸ğµç µå·¡°ï Ä¿ºê°¡ ³¡³ª¸é ¼±ºĞvector¸¦ clearÇØÁØ´Ù.
+		vec.clear(); //ëª¨ë“  ë“œë˜ê³¤ ì»¤ë¸Œê°€ ëë‚˜ë©´ ì„ ë¶„vectorë¥¼ clearí•´ì¤€ë‹¤.
 	}
 
-	//1x1ÀÇ »ç°¢ÇüÀ» Ã£¾Æ recÀ» Áõ°¡½ÃÅ²´Ù.
+	//1x1ì˜ ì‚¬ê°í˜•ì„ ì°¾ì•„ recì„ ì¦ê°€ì‹œí‚¨ë‹¤.
 	for(int i=0; i<100; i++)
 		for(int j=0; j<100; j++)
 		{

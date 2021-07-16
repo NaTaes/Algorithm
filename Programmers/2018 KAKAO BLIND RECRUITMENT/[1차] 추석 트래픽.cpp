@@ -1,6 +1,6 @@
-/* https://programmers.co.kr/learn/courses/30/lessons/17676 */
+// https://programmers.co.kr/learn/courses/30/lessons/17676
 
-/* 시 분을 초 단위로 변경시켜서 진행하면 더욱 간변해 질 수 있다. */
+// 시 분을 초 단위로 변경시켜서 진행하면 더욱 간변해 질 수 있다.
 
 #include <string>
 #include <vector>

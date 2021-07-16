@@ -5,15 +5,15 @@ int Map[20][20];
 bool check[20][20];
 int N;
 int Max;
-int dx[4] = {-1, 0, 1, 0}; //¡è, ¡ç, ¡é, ¡æ
+int dx[4] = {-1, 0, 1, 0}; //â†‘, â†, â†“, â†’
 int dy[4] = {0, -1, 0, 1};
 
 bool Block_Move(int arr[20][20], int dir)
 {
-	bool mv_ch = true; //ÀÌ ÇÔ¼ö¸¦ ÅëÇØ °ªµéÀÌ º¯ÇÑ°ÍÀÌ ÀÖ´ÂÁö È®ÀÎÇÏ±â À§ÇÑ Ã¼Å© bool
+	bool mv_ch = true; //ì´ í•¨ìˆ˜ë¥¼ í†µí•´ ê°’ë“¤ì´ ë³€í•œê²ƒì´ ìˆëŠ”ì§€ í™•ì¸í•˜ê¸° ìœ„í•œ ì²´í¬ bool
 	int i = 0, j = 0;
-	int ch = (dx[dir] + dy[dir]) * -1; //¹æÇâÀÌ ¡è, ¡ç ÀÌ¶ó¸é 0 ºÎÅÍ N-1±îÁö Áõ°¡ÇÏ´Â for¹®, ¡é, ¡æ ÀÌ¶ó¸é N-1 ºÎÅÍ 0±îÁö °¨¼ÒÇÏ´Â for¹®
-	if(dir==2 || dir == 3) //¹æÇâÀÌ ¡é, ¡æ ÀÌ¶ó¸é ½ÇÇà
+	int ch = (dx[dir] + dy[dir]) * -1; //ë°©í–¥ì´ â†‘, â† ì´ë¼ë©´ 0 ë¶€í„° N-1ê¹Œì§€ ì¦ê°€í•˜ëŠ” forë¬¸, â†“, â†’ ì´ë¼ë©´ N-1 ë¶€í„° 0ê¹Œì§€ ê°ì†Œí•˜ëŠ” forë¬¸
+	if(dir==2 || dir == 3) //ë°©í–¥ì´ â†“, â†’ ì´ë¼ë©´ ì‹¤í–‰
 	{
 		i = N-1;
 		j = N-1;
@@ -24,42 +24,42 @@ bool Block_Move(int arr[20][20], int dir)
 		for(; j>=0 && j<N; j+=ch)
 		{
 			if(arr[i][j] == 0) continue;
-			int mx = i; //for¹®ÀÌ µ¹¾Æ°¡´Â i, j´Â À¯ÁöÇØ¾ß ÇÏ¹Ç·Î mx, my¿¡ º¹»ç
+			int mx = i; //forë¬¸ì´ ëŒì•„ê°€ëŠ” i, jëŠ” ìœ ì§€í•´ì•¼ í•˜ë¯€ë¡œ mx, myì— ë³µì‚¬
 			int my = j;
-			if(mx+dx[dir] < 0 || my+dy[dir] < 0 || mx+dx[dir] > N-1 || my+dy[dir] > N-1) continue; //¸ÊÀ» ¹ş¾î³ª¸é continue
+			if(mx+dx[dir] < 0 || my+dy[dir] < 0 || mx+dx[dir] > N-1 || my+dy[dir] > N-1) continue; //ë§µì„ ë²—ì–´ë‚˜ë©´ continue
 						
-			while(mx+dx[dir] >= 0 && my+dy[dir] >= 0 && mx+dx[dir] < N && my+dy[dir] < N) //¸Ê¾È¿¡ ÀÖÀ»¶§¸¸ ½ÇÇà
+			while(mx+dx[dir] >= 0 && my+dy[dir] >= 0 && mx+dx[dir] < N && my+dy[dir] < N) //ë§µì•ˆì— ìˆì„ë•Œë§Œ ì‹¤í–‰
 			{
-				if(check[mx+dx[dir]][my+dy[dir]]) break; //Ã¼Å© µÈ °÷ÀÌ¶ó¸é °ªÀ» ´õÇØ°¥ ¼ö ¾øÀ¸¹Ç·Î break;
+				if(check[mx+dx[dir]][my+dy[dir]]) break; //ì²´í¬ ëœ ê³³ì´ë¼ë©´ ê°’ì„ ë”í•´ê°ˆ ìˆ˜ ì—†ìœ¼ë¯€ë¡œ break;
 
-				if(arr[mx+dx[dir]][my+dy[dir]] == 0) //¿òÁ÷ÀÏ °÷ÀÌ 0ÀÌ¶ó¸é ÀÌµ¿½ÃÄÑÁØ´Ù.
+				if(arr[mx+dx[dir]][my+dy[dir]] == 0) //ì›€ì§ì¼ ê³³ì´ 0ì´ë¼ë©´ ì´ë™ì‹œì¼œì¤€ë‹¤.
 				{
 					arr[mx+dx[dir]][my+dy[dir]] = arr[mx][my];
 					arr[mx][my] = 0;
-					mx+=dx[dir]; //ÀÌµ¿½ÃÅ² ÈÄ mx, my¸¦ °»½Å
+					mx+=dx[dir]; //ì´ë™ì‹œí‚¨ í›„ mx, myë¥¼ ê°±ì‹ 
 					my+=dy[dir];
-					mv_ch = false; //ÀÌµ¿À» ÇßÀ¸¹Ç·Î mv_ch¸¦ false·Î º¯°æ
-					continue; //0À¸·Î ÀÌµ¿ÇÑ °ÍÀÌ¹Ç·Î °è¼Ó ½ÇÇàÇÑ´Ù.
+					mv_ch = false; //ì´ë™ì„ í–ˆìœ¼ë¯€ë¡œ mv_chë¥¼ falseë¡œ ë³€ê²½
+					continue; //0ìœ¼ë¡œ ì´ë™í•œ ê²ƒì´ë¯€ë¡œ ê³„ì† ì‹¤í–‰í•œë‹¤.
 				}
 				
-				if(arr[mx][my] == arr[mx+dx[dir]][my+dy[dir]]) //ÀÌµ¿ÇÒ °÷°ú ÇöÀçÀ§Ä¡ÀÇ °ªÀÌ °°´Ù¸é ½ÇÇà
+				if(arr[mx][my] == arr[mx+dx[dir]][my+dy[dir]]) //ì´ë™í•  ê³³ê³¼ í˜„ì¬ìœ„ì¹˜ì˜ ê°’ì´ ê°™ë‹¤ë©´ ì‹¤í–‰
 				{
-					arr[mx][my]=0; //³» À§Ä¡ 0
-					mx+=dx[dir]; //À§Ä¡ °»½Å
+					arr[mx][my]=0; //ë‚´ ìœ„ì¹˜ 0
+					mx+=dx[dir]; //ìœ„ì¹˜ ê°±ì‹ 
 					my+=dy[dir];
-					arr[mx][my]*=2; //°»½ÅÀ§Ä¡ÀÇ °ªÀ» 2¹è·Î
-					Max = max(Max, arr[mx][my]); //Max°ªÀ» È®ÀÎ
-					check[mx][my] = true; //´õÇØÁø °÷ÀÌ¹Ç·Î ´Ù½Ã ´õÇÒ ¼ö ¾ø°Ô checkÇØÁØ´Ù.
-					mv_ch = false; //ÀÌµ¿À» ÇßÀ¸¹Ç·Î mv_ch¸¦ false·Î º¯°æ
+					arr[mx][my]*=2; //ê°±ì‹ ìœ„ì¹˜ì˜ ê°’ì„ 2ë°°ë¡œ
+					Max = max(Max, arr[mx][my]); //Maxê°’ì„ í™•ì¸
+					check[mx][my] = true; //ë”í•´ì§„ ê³³ì´ë¯€ë¡œ ë‹¤ì‹œ ë”í•  ìˆ˜ ì—†ê²Œ checkí•´ì¤€ë‹¤.
+					mv_ch = false; //ì´ë™ì„ í–ˆìœ¼ë¯€ë¡œ mv_chë¥¼ falseë¡œ ë³€ê²½
 					break;
 				}
-				else //ÀÌµ¿ÇÒ °÷°ú ÇöÀçÀ§Ä¡ÀÇ °ªÀÌ ´Ù¸£¹Ç·Î ±×¸¸ÇÑ´Ù.
+				else //ì´ë™í•  ê³³ê³¼ í˜„ì¬ìœ„ì¹˜ì˜ ê°’ì´ ë‹¤ë¥´ë¯€ë¡œ ê·¸ë§Œí•œë‹¤.
 					break;				
 			}
 		}
-		j = (dir==2 || dir == 3) ? N-1 : 0; //ÇÑ iÀÇ ¿­À» ÀüºÎ ¿òÁ÷¿´À¸¹Ç·Î j¸¦ ·Ñ¹éÇØÁØ´Ù.
+		j = (dir==2 || dir == 3) ? N-1 : 0; //í•œ iì˜ ì—´ì„ ì „ë¶€ ì›€ì§ì˜€ìœ¼ë¯€ë¡œ jë¥¼ ë¡¤ë°±í•´ì¤€ë‹¤.
 	}
-	return mv_ch; //º¯ÇÑ °ÍÀÌ ÀÖ´Ù¸é false¸¦ ¸®ÅÏ, º¯ÇÑ °ÍÀÌ ¾ø´Ù¸é true¸¦ ¸®ÅÏ
+	return mv_ch; //ë³€í•œ ê²ƒì´ ìˆë‹¤ë©´ falseë¥¼ ë¦¬í„´, ë³€í•œ ê²ƒì´ ì—†ë‹¤ë©´ trueë¥¼ ë¦¬í„´
 }
 
 void Easy_Map(int arr[20][20], int dir, int count)
@@ -69,15 +69,15 @@ void Easy_Map(int arr[20][20], int dir, int count)
 	for(int i=0; i<N; i++)
 		for(int j=0; j<N; j++)
 		{
-			mv_arr[i][j] = arr[i][j]; //¹Ş¾Æ¿Â ¹è¿­À» ¿òÁ÷ÀÏ ¹è¿­ÀÎ mv_arr¿¡ ³Ö¾îÁØ´Ù.
-			check[i][j] = false; //check¸¦ ´Ù½Ã µ¹·Á³õ´Â´Ù.
+			mv_arr[i][j] = arr[i][j]; //ë°›ì•„ì˜¨ ë°°ì—´ì„ ì›€ì§ì¼ ë°°ì—´ì¸ mv_arrì— ë„£ì–´ì¤€ë‹¤.
+			check[i][j] = false; //checkë¥¼ ë‹¤ì‹œ ëŒë ¤ë†“ëŠ”ë‹¤.
 		}
 
-	if(Block_Move(mv_arr, dir)) return; //¸®ÅÏÇÑ °ªÀÌ true¸é º¯ÇÑ°ÍÀÌ ¾øÀ¸¹Ç·Î Àç±Í¸¦ ±×¸¸ÇÑ´Ù.
-	if(count > 3) return; //3º¸´Ù Å©¸é ¾ÈµÇ¹Ç·Î Àç±Í¸¦ ±×¸¸ÇÑ´Ù.(0, 1, 2, 3, 4) : 5È¸
+	if(Block_Move(mv_arr, dir)) return; //ë¦¬í„´í•œ ê°’ì´ trueë©´ ë³€í•œê²ƒì´ ì—†ìœ¼ë¯€ë¡œ ì¬ê·€ë¥¼ ê·¸ë§Œí•œë‹¤.
+	if(count > 3) return; //3ë³´ë‹¤ í¬ë©´ ì•ˆë˜ë¯€ë¡œ ì¬ê·€ë¥¼ ê·¸ë§Œí•œë‹¤.(0, 1, 2, 3, 4) : 5íšŒ
 
 	for(int i=0; i<4; i++)
-		Easy_Map(mv_arr, i, count+1); //4¹æÇâÀ» µ¹¾ÆÁØ´Ù.
+		Easy_Map(mv_arr, i, count+1); //4ë°©í–¥ì„ ëŒì•„ì¤€ë‹¤.
 }
 
 int main(void)
@@ -88,11 +88,11 @@ int main(void)
 		for(int j=0; j<N; j++)
 		{
 			cin >> Map[i][j];
-			Max = max(Max, Map[i][j]); //ÇöÀç ¸Ê¿¡¼­ °¡Àå Å« °ªÀ» ¹Ì¸® Max¿¡ ³Ö¾îÁØ´Ù.
+			Max = max(Max, Map[i][j]); //í˜„ì¬ ë§µì—ì„œ ê°€ì¥ í° ê°’ì„ ë¯¸ë¦¬ Maxì— ë„£ì–´ì¤€ë‹¤.
 		}
 
 	for(int i=0; i<4; i++)
-		Easy_Map(Map, i, 0); //Çö À§Ä¡¿¡¼­ 4¹æÇâÀ» µ¹¾ÆÁØ´Ù.
+		Easy_Map(Map, i, 0); //í˜„ ìœ„ì¹˜ì—ì„œ 4ë°©í–¥ì„ ëŒì•„ì¤€ë‹¤.
 
 	cout << Max << endl;
 }

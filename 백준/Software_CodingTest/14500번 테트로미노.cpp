@@ -17,7 +17,7 @@ int main(void)
 		for(int j=0; j<M; j++)
 			cin >> NM[i][j];
 
-	//Å×Æ®·Î¹Ì³ë ¸ğ¾ç 19°³
+	//í…ŒíŠ¸ë¡œë¯¸ë…¸ ëª¨ì–‘ 19ê°œ
 	vec_x.push_back(0), vec_y.push_back(27);
 	vec_x.push_back(27), vec_y.push_back(0);
 	vec_x.push_back(26), vec_y.push_back(1);
@@ -55,9 +55,9 @@ int main(void)
 				int y4 = (vec_y[n] & 3) + j;
 
 				if(x1 < 0 || x2 < 0 || x3 < 0 || x4 < 0 || x1 > N-1 || x2 > N-1 || x3 > N-1 || x4 > N-1 ||
-					y1 < 0 || y2 < 0 || y3 < 0 || y4 < 0 || y1 > M-1 || y2 > M-1 || y3 > M-1 || y4 > M-1) continue; //Å×Æ®·Î¹Ì³ë ¸ğ¾çÀÌ ¸ÊÀÇ Å©±â¸¦ ³Ñ¾î°¡¸é continue
+					y1 < 0 || y2 < 0 || y3 < 0 || y4 < 0 || y1 > M-1 || y2 > M-1 || y3 > M-1 || y4 > M-1) continue; //í…ŒíŠ¸ë¡œë¯¸ë…¸ ëª¨ì–‘ì´ ë§µì˜ í¬ê¸°ë¥¼ ë„˜ì–´ê°€ë©´ continue
 
-				Max = max(NM[x1][y1] + NM[x2][y2] + NM[x3][y3] + NM[x4][y4], Max); //Å×Æ®·Î¹Ì³ë ¸ğ¾çÀÇ °ª°ú Max°ªÀ» ºñ±³ÇØ Max¿¡ ´ëÀÔ
+				Max = max(NM[x1][y1] + NM[x2][y2] + NM[x3][y3] + NM[x4][y4], Max); //í…ŒíŠ¸ë¡œë¯¸ë…¸ ëª¨ì–‘ì˜ ê°’ê³¼ Maxê°’ì„ ë¹„êµí•´ Maxì— ëŒ€ì…
 			}
 		}
 

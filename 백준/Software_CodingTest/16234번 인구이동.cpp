@@ -7,7 +7,7 @@ int A[50][50];
 bool ch[50][50];
 
 int dx[4] = {0, 0, -1, 1};
-int dy[4] = {-1, 1, 0, 0}; //¡ç ¡æ ¡è ¡é
+int dy[4] = {-1, 1, 0, 0}; //â† â†’ â†‘ â†“
 
 int main(void)
 {
@@ -29,13 +29,13 @@ int main(void)
 		{
 			for(int j=0; j<N; j++)
 			{
-				if(ch[i][j]) continue; //¹æ¹®ÇÑÀû ÀÖ´Ù¸é continue	
+				if(ch[i][j]) continue; //ë°©ë¬¸í•œì  ìˆë‹¤ë©´ continue	
 				vector<pair<int, int>> vec;
 				
 				vec.push_back(make_pair(i, j));
 				que.push(make_pair(i, j)); //que push
 
-				while(!que.empty()) //¿­¸° °÷À» ÀüºÎ Å½»ö
+				while(!que.empty()) //ì—´ë¦° ê³³ì„ ì „ë¶€ íƒìƒ‰
 				{
 					int x = que.front().first;
 					int y = que.front().second;
@@ -43,24 +43,24 @@ int main(void)
 
 					que.pop();
 
-					for(int n=0; n<4; n++) //4¹æÇâ È®ÀÎ
+					for(int n=0; n<4; n++) //4ë°©í–¥ í™•ì¸
 					{
 						int mx = x + dx[n];
 						int my = y + dy[n];
 
-						if(mx < 0 || my < 0 || mx > N-1 || my > N-1) continue; //¹üÀ§ ³Ñ¾î°¡¸é continue
+						if(mx < 0 || my < 0 || mx > N-1 || my > N-1) continue; //ë²”ìœ„ ë„˜ì–´ê°€ë©´ continue
 
 						int df = abs(A[x][y] - A[mx][my]);
 
-						if(df < L || df > R) continue; //¹üÀ§ Á¶°Ç È®ÀÎ
+						if(df < L || df > R) continue; //ë²”ìœ„ ì¡°ê±´ í™•ì¸
 
-						if(ch[mx][my]) continue; //¹æ¹®ÇÑ Àû ÀÖ´Ù¸é ¹æ¹®ÇÏÁö ¾Ê´Â´Ù
+						if(ch[mx][my]) continue; //ë°©ë¬¸í•œ ì  ìˆë‹¤ë©´ ë°©ë¬¸í•˜ì§€ ì•ŠëŠ”ë‹¤
 						ch[mx][my] = true;
 
-						que.push(make_pair(mx, my)); //´ÙÀ½ °¥ À§Ä¡ push
-						vec.push_back(make_pair(mx, my)); //À§Ä¡ ¹é¾÷
+						que.push(make_pair(mx, my)); //ë‹¤ìŒ ê°ˆ ìœ„ì¹˜ push
+						vec.push_back(make_pair(mx, my)); //ìœ„ì¹˜ ë°±ì—…
 
-						condition = true; //ÀÌµ¿ÀÌ °¡´ÉÇß±â ¶§¹®¿¡ conditionÀ» true ¹İº¹ °¡´ÉÇÏ°Ô ÇÔ
+						condition = true; //ì´ë™ì´ ê°€ëŠ¥í–ˆê¸° ë•Œë¬¸ì— conditionì„ true ë°˜ë³µ ê°€ëŠ¥í•˜ê²Œ í•¨
 					}
 				}
 

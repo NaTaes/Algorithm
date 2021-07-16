@@ -1,4 +1,6 @@
-#include<stdio.h>
+#include <iostream>
+
+using namespace std;
 
 int main(){
     int hobit[9];
@@ -7,7 +9,7 @@ int main(){
     
     for(i=0; i < 9; i++)
     {
-        scanf("%d", &hobit[i]);
+        cin >> hobit[i];
         sum += hobit[i];
     }
     
@@ -33,7 +35,7 @@ int main(){
                 for(temp = 0; temp<9; temp++)
                 {
                     if(temp != i && temp != j)
-                        printf("%d\n", hobit[temp]);
+                        cout << hobit[temp] << endl;
                 }
                 return 0;
             }
